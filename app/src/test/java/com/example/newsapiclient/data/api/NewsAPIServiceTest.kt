@@ -28,6 +28,7 @@ class NewsAPIServiceTest {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NewsAPIService::class.java)
+        enqueueMockResponse("newsresponse.json")
     }
 
     private fun enqueueMockResponse(fileName: String) {
@@ -44,7 +45,6 @@ class NewsAPIServiceTest {
 
     @Test
     fun `getTopHeadlines sentRequest should receive expected result`() = runBlocking {
-        enqueueMockResponse("newsresponse.json")
         val responseBody = service.getTopHeadlines("us", 1).body()
         val request = server.takeRequest()
         assertThat(responseBody).isNotNull()
@@ -53,7 +53,6 @@ class NewsAPIServiceTest {
 
     @Test
     fun `getTopHeadlines receivedResponse should have correct pageSize`() = runBlocking{
-        enqueueMockResponse("newsresponse.json")
         val responseBody = service.getTopHeadlines("us", 1).body()
         val articlesList = responseBody!!.articles
         assertThat(articlesList.size).isEqualTo(17)
@@ -61,7 +60,6 @@ class NewsAPIServiceTest {
 
     @Test
     fun `getTopHeadlines receivedResponse should have correct content`() = runBlocking{
-        enqueueMockResponse("newsresponse.json")
         val responseBody = service.getTopHeadlines("us", 1).body()
         val article = responseBody!!.articles.first()
         assertThat(article.author).isEqualTo("Steve Kopack")
