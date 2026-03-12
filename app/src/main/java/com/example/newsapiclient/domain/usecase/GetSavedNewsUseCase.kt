@@ -4,7 +4,7 @@ import com.example.newsapiclient.data.model.Article
 import com.example.newsapiclient.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 
-class GetSaveNewsUseCase(private val newsRepository: NewsRepository) {
+class GetSavedNewsUseCase(private val newsRepository: NewsRepository) {
 
     fun execute(): Flow<List<Article>> = newsRepository.getSavedNews()
 }
