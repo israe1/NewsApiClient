@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
+    app:cardCornerRadius="12dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/newsImage"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            tools:background="@color/edit_text_light"
+            android:contentDescription="@string/news_image" />
+        <TextView
+            android:id="@+id/newsTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:maxLines="3"
+            android:fontFamily="@font/inter_variable"
+            style="@style/TextAppearance.App.Title"
+            tools:text="The Future of AI: How Generative Models are Changing the Tech Landscape Permanently" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="12dp">
+            <TextView
+                android:id="@+id/newsSourceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                tools:text="CNN"
+                style="@style/TextAppearance.App.AccentText"/>
+            <TextView
+                android:id="@+id/newsPublishedTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:maxLines="1"
+                tools:text="\u2022 12h ago"
+                style="@style/TextAppearance.App.Subtitle"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

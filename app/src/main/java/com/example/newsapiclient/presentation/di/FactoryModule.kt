@@ -3,7 +3,7 @@ package com.example.newsapiclient.presentation.di
 import android.app.Application
 import com.example.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
 import com.example.newsapiclient.domain.usecase.GetSearchedNewsUseCase
-import com.example.newsapiclient.presentation.NewsViewModelFactory
+import com.example.newsapiclient.presentation.viewmodel.NewsViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

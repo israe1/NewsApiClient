@@ -1,4 +1,4 @@
-package com.example.newsapiclient.presentation
+package com.example.newsapiclient.presentation.viewmodel
 
 import android.app.Application
 import android.content.Context
@@ -32,6 +32,7 @@ class NewsViewModel(
                 newsHeadlines.postValue(Resource.Error("Internet is not available"))
             }
         } catch (e: Exception) {
+            e.printStackTrace()
             newsHeadlines.postValue(Resource.Error(e.message.toString()))
         }
     }

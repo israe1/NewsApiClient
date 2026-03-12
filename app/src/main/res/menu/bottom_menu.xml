@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/news_headlines"
+        android:id="@+id/newsFragment"
+        android:icon="@drawable/outline_10k_24"/>
+    <item android:title="@string/saved"
+        android:id="@+id/savedNewsFragment"
+        android:icon="@drawable/outline_10mp_24"/>
+    <item android:title="@string/settings"
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/outline_10k_24"/>
+</menu>

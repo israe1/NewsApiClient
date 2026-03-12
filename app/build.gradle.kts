@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.navigation.safe.args)
 }
 
 android {
@@ -12,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.newsapiclient"
-        minSdk = 26
+        minSdk = 28
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -40,6 +42,7 @@ android {
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
         buildConfig = true
     }
 }
@@ -63,6 +66,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
+    implementation(libs.androidx.fragment)
     ksp(libs.androidx.lifecycle.compiler)
 
     // Coroutines
@@ -78,6 +82,13 @@ dependencies {
     //di
     implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.android.compiler)
+
+    //navigation
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+
+    // Glide
+    implementation(libs.glide)
 
     testImplementation(libs.junit)
     testImplementation(libs.squareup.mockwebserver3)
