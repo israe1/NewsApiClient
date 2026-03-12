@@ -4,11 +4,11 @@
 
     <item android:title="@string/news_headlines"
         android:id="@+id/newsFragment"
-        android:icon="@drawable/outline_10k_24"/>
+        android:icon="@drawable/outline_newsmode_24"/>
     <item android:title="@string/saved"
         android:id="@+id/savedNewsFragment"
-        android:icon="@drawable/outline_10mp_24"/>
+        android:icon="@drawable/outline_bookmark_24"/>
     <item android:title="@string/settings"
         android:id="@+id/settingsFragment"
-        android:icon="@drawable/outline_10k_24"/>
+        android:icon="@drawable/outline_settings_applications_24"/>
 </menu>
