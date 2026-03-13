@@ -1,10 +1,8 @@
 package com.example.newsapiclient.presentation.util
 
-import android.util.Log
 import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import java.time.Instant
 import java.time.ZoneOffset
@@ -51,5 +49,18 @@ object Utils {
             e.printStackTrace()
             publishedAt
         }
+    }
+
+    fun getCategoryList(): List<String> {
+        return listOf(
+            "Top Headlines",
+            "Business",
+            "Entertainment",
+            "General",
+            "Health",
+            "Science",
+            "Sport",
+            "Technology"
+        )
     }
 }

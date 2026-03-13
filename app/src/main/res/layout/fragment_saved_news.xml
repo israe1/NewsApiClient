@@ -1,13 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SavedNewsFragment">
-
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/savedNewsToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/saved_news_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/saved_articles"
+        app:titleTextAppearance="@style/TextAppearance.App.Title"
+        app:navigationIcon="@drawable/baseline_bookmark_added_24"/>
+    <View
+        app:layout_constraintTop_toBottomOf="@id/savedNewsToolbar"
+        android:id="@+id/toolbarDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/edit_text_light"/>
 
-</FrameLayout>
+    <ProgressBar
+        android:id="@+id/savedNewsProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/accent_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/savedNewsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_news_headline"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/layoutEmptyList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savedNewsToolbar"
+        app:layout_constraintVertical_bias="0.25"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:alpha="0.3"
+            android:contentDescription="@string/bookmark_icon"
+            android:src="@drawable/outline_bookmark_24"
+            app:tint="@color/icon_light" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_saved_articles"
+            android:textColor="@color/icon_light"
+            android:textFontWeight="600"
+            android:textSize="16sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

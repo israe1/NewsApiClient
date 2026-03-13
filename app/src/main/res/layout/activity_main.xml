@@ -18,12 +18,24 @@
         android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"
+        android:background="@color/edit_text_light"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:id="@+id/bottom_navigation"
-        app:menu="@menu/bottom_menu"/>
+        app:menu="@menu/bottom_menu"
+        app:itemTextAppearanceActive="@style/NavTextAppearance"
+        app:itemTextAppearanceInactive="@style/NavTextAppearance"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemIconTint="@color/nav_item_color"
+        android:background="@color/background_light"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/edit_text_light"/>
 
 </LinearLayout>

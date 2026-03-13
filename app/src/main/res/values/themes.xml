@@ -9,6 +9,11 @@
 
     <style name="Theme.NewsApiClient" parent="Base.Theme.NewsApiClient" />
 
+    <style name="NavTextAppearance">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TextAppearance.App.Title" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>

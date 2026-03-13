@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.newsapiclient.R
 import com.example.newsapiclient.data.model.Article
 import com.example.newsapiclient.databinding.ItemNewsHeadlineBinding
@@ -63,7 +62,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                 Glide.with(newsImage.context)
                     .load(article.urlToImage)
                     .transform(CenterCrop())
-                    .placeholder(R.color.background_light)
+                    .placeholder(R.color.edit_text_light)
                     .into(newsImage)
             }
         }

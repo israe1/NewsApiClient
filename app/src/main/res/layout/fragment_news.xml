@@ -6,13 +6,66 @@
     android:background="@color/background_light"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".NewsFragment"
+    android:focusable="true"
     android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/newsToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/newsfeed"
+        app:titleTextAppearance="@style/TextAppearance.App.Title"
+        app:navigationIcon="@drawable/outline_newspaper_24"/>
+    <EditText
+        android:id="@+id/searchNewsInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="name"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/newsToolbar"
+        android:drawableStart="@drawable/outline_search_24"
+        android:background="@drawable/edittext_background"
+        android:layout_marginHorizontal="16dp"
+        android:drawableTint="@color/icon_light"
+        android:hint="Search news..."
+        android:textColorHint="@color/subtitle_text_light"
+        android:textSize="12sp"
+        android:drawablePadding="12dp"/>
+
+    <HorizontalScrollView
+        android:id="@+id/categoryScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/searchNewsInput"
+        android:paddingHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none"
+        android:clipToPadding="false">
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/categoryChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:animateLayoutChanges="true"/>
+    </HorizontalScrollView>
+    <View
+        app:layout_constraintTop_toBottomOf="@id/categoryScrollView"
+        android:id="@+id/toolbarDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/edit_text_light"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/newsHeadLineList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toTopOf="@id/toolbarDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_news_headline"/>
 
     <ProgressBar
