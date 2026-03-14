@@ -21,6 +21,7 @@ class NewsViewModel(
     private val getSearchedNewsUseCase: GetSearchedNewsUseCase
 ): AndroidViewModel(application = application) {
     val newsHeadlines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+    val searchedNewsHeadlines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
     var category: String = ""
     var selectedCategoryIndex: Int = 0
 
@@ -36,6 +37,21 @@ class NewsViewModel(
         } catch (e: Exception) {
             e.printStackTrace()
             newsHeadlines.postValue(Resource.Error(e.message.toString()))
+        }
+    }
+
+    fun searchNewsHeadlines(searchQuery: String, country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            if (isInternetAvailable(application)) {
+                searchedNewsHeadlines.postValue(Resource.Loading())
+                val apiResult = getSearchedNewsUseCase.execute(searchQuery, country, page)
+                searchedNewsHeadlines.postValue(apiResult)
+            } else {
+                searchedNewsHeadlines.postValue(Resource.Error("Internet is not available"))
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            searchedNewsHeadlines.postValue(Resource.Error(e.message.toString()))
         }
     }
 

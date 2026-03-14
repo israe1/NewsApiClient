@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.newsapiclient.databinding.ActivityMainBinding
 import com.example.newsapiclient.presentation.adapter.NewsAdapter
+import com.example.newsapiclient.presentation.adapter.SearchedNewsAdapter
 import com.example.newsapiclient.presentation.viewmodel.NewsViewModel
 import com.example.newsapiclient.presentation.viewmodel.NewsViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var factory: NewsViewModelFactory
     @Inject
     lateinit var newsAdapter: NewsAdapter
+    @Inject
+    lateinit var searchedNewsAdapter: SearchedNewsAdapter
     private lateinit var binding: ActivityMainBinding
     lateinit var viewModel: NewsViewModel
 

@@ -39,6 +39,9 @@ class NewsFragment : Fragment() {
             findNavController().navigate(action)
         }
         binding = FragmentNewsBinding.bind(view)
+        binding.searchNewsInput.setOnClickListener {
+            findNavController().navigate(R.id.action_newsFragment_to_searchNewsFragment)
+        }
         initChipCategories()
         initRecyclerView()
     }

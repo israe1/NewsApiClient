@@ -1,6 +1,7 @@
 package com.example.newsapiclient.presentation.di
 
 import com.example.newsapiclient.presentation.adapter.NewsAdapter
+import com.example.newsapiclient.presentation.adapter.SearchedNewsAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,6 +16,12 @@ class AdapterModule {
     @Provides
     fun provideNewsAdapter(): NewsAdapter {
         return NewsAdapter()
+    }
+
+    @Singleton
+    @Provides
+    fun provideSearchedNewsAdapter(): SearchedNewsAdapter {
+        return SearchedNewsAdapter()
     }
 
 }

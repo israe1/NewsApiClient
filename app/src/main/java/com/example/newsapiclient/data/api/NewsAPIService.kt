@@ -21,7 +21,7 @@ interface NewsAPIService {
     ): Response<APIResponse>
 
     @GET("top-headlines")
-    suspend fun searchTopHeadlines(
+    suspend fun searchNewsHeadlines(
         @Query("q")
         searchQuery: String,
         @Query("country")
