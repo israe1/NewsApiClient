@@ -21,8 +21,10 @@ class NewsViewModel(
     private val getSearchedNewsUseCase: GetSearchedNewsUseCase
 ): AndroidViewModel(application = application) {
     val newsHeadlines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+    var category: String = ""
+    var selectedCategoryIndex: Int = 0
 
-    fun getNewsHeadlines(country: String, category: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
+    fun getNewsHeadlines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
         try {
             if (isInternetAvailable(application)) {
                 newsHeadlines.postValue(Resource.Loading())

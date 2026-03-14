@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/background_light"
     tools:context=".NewsDetailFragment">
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/newsDetailToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/news_detail_fragment" />
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/outline_arrow_back_24"
+        tools:title="The Boston Globe"
+        app:menu="@menu/news_detail_menu"
+        app:titleTextAppearance="@style/TextAppearance.App.Title"/>
+    <View
+        android:id="@+id/toolbarDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/edit_text_light"/>
+    <WebView
+        android:id="@+id/newsDetailWebView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-</FrameLayout>
+</LinearLayout>

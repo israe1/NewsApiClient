@@ -12,7 +12,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/saved_articles"
         app:titleTextAppearance="@style/TextAppearance.App.Title"
-        app:navigationIcon="@drawable/baseline_bookmark_added_24"/>
+        app:navigationIcon="@drawable/outline_newspaper_24"/>
     <View
         app:layout_constraintTop_toBottomOf="@id/savedNewsToolbar"
         android:id="@+id/toolbarDivider"

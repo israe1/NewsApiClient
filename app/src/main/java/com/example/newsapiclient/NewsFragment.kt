@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapiclient.data.util.Resource
 import com.example.newsapiclient.databinding.FragmentNewsBinding
@@ -33,6 +34,10 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         newsAdapter = (activity as MainActivity).newsAdapter
+        newsAdapter.setOnItemClickListener {
+            val action = NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(it)
+            findNavController().navigate(action)
+        }
         binding = FragmentNewsBinding.bind(view)
         initChipCategories()
         initRecyclerView()
@@ -52,7 +57,7 @@ class NewsFragment : Fragment() {
                     .setAllCornerSizes(resources.getDimension(R.dimen._16dp))
                     .build()
 
-                if (index == 0) isChecked = true
+                if (index == viewModel.selectedCategoryIndex) isChecked = true
             }
 
             binding.categoryChipGroup.addView(chip)
@@ -68,7 +73,10 @@ class NewsFragment : Fragment() {
 
     private fun handleChipClick(index: Int, chip: Chip, isChecked: Boolean) {
         if (isChecked) {
-            getNews(if (index == 0) "" else chip.text.toString().lowercase())
+            viewModel.category = if (index == 0) "" else chip.text.toString().lowercase()
+            viewModel.selectedCategoryIndex = index
+            page = 1
+            viewModel.getNewsHeadlines(country, page)
             chip.animate()
                 .scaleX(0.95f)
                 .translationZ(16f)
@@ -84,15 +92,15 @@ class NewsFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        binding.apply {
-            newsHeadLineList.adapter = newsAdapter
-            newsHeadLineList.layoutManager = LinearLayoutManager(activity)
+        binding.newsHeadLineList.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
         }
         displayNewsList()
     }
 
     private fun displayNewsList() {
-        getNews("")
+        viewModel.getNewsHeadlines(country, page)
         viewModel.newsHeadlines.observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Resource.Success -> {
@@ -112,10 +120,6 @@ class NewsFragment : Fragment() {
                 }
             }
         })
-    }
-
-    private fun getNews(category: String) {
-        viewModel.getNewsHeadlines(country, category, page)
     }
 
     private fun showProgressBar() {

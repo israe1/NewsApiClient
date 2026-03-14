@@ -51,7 +51,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     override fun getItemCount(): Int = differ.currentList.size
 
-    class NewsViewHolder(val binding: ItemNewsHeadlineBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class NewsViewHolder(val binding: ItemNewsHeadlineBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(article: Article) {
             binding.apply {
@@ -64,9 +64,19 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                     .transform(CenterCrop())
                     .placeholder(R.color.edit_text_light)
                     .into(newsImage)
+
+                root.setOnClickListener {
+                    onItemClickListener?.let {
+                        it(article)
+                    }
+                }
             }
         }
-
     }
 
+    private var onItemClickListener: ((Article) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Article) -> Unit) {
+        onItemClickListener = listener
+    }
 }
