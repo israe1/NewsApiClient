@@ -32,6 +32,7 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
+        newsAdapter = (activity as MainActivity).newsAdapter
         binding = FragmentNewsBinding.bind(view)
         initChipCategories()
         initRecyclerView()
@@ -83,7 +84,6 @@ class NewsFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        newsAdapter = NewsAdapter()
         binding.apply {
             newsHeadLineList.adapter = newsAdapter
             newsHeadLineList.layoutManager = LinearLayoutManager(activity)
