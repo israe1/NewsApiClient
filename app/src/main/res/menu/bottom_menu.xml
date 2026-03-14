@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/news_headlines"
-        android:id="@+id/newsFragment"
+        android:id="@+id/news_graph"
         android:icon="@drawable/outline_newsmode_24"/>
     <item android:title="@string/saved"
-        android:id="@+id/savedNewsFragment"
+        android:id="@+id/saved_news_graph"
         android:icon="@drawable/outline_bookmark_24"/>
     <item android:title="@string/settings"
-        android:id="@+id/settingsFragment"
+        android:id="@+id/settings_graph"
         android:icon="@drawable/outline_settings_applications_24"/>
 </menu>
