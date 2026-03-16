@@ -4,6 +4,7 @@
     <item android:title="Save"
         android:id="@+id/saveArticle"
         app:showAsAction="always"
+        android:visible="false"
         android:icon="@drawable/outline_bookmark_add_24"/>
     <item android:title="Share"
         android:id="@+id/shareArticle"

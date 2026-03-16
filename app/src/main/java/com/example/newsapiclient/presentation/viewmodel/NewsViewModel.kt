@@ -7,18 +7,26 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.application
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.newsapiclient.data.model.APIResponse
+import com.example.newsapiclient.data.model.Article
 import com.example.newsapiclient.data.util.Resource
+import com.example.newsapiclient.domain.usecase.DeleteSavedNewsUseCase
 import com.example.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
+import com.example.newsapiclient.domain.usecase.GetSavedNewsUseCase
 import com.example.newsapiclient.domain.usecase.GetSearchedNewsUseCase
+import com.example.newsapiclient.domain.usecase.SaveNewsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class NewsViewModel(
     application: Application,
     private val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
-    private val getSearchedNewsUseCase: GetSearchedNewsUseCase
+    private val getSearchedNewsUseCase: GetSearchedNewsUseCase,
+    private val saveNewsUseCase: SaveNewsUseCase,
+    private val getSavedNewsUseCase: GetSavedNewsUseCase,
+    private val deleteSavedNewsUseCase: DeleteSavedNewsUseCase
 ): AndroidViewModel(application = application) {
     val newsHeadlines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
     val searchedNewsHeadlines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
@@ -53,6 +61,20 @@ class NewsViewModel(
             e.printStackTrace()
             searchedNewsHeadlines.postValue(Resource.Error(e.message.toString()))
         }
+    }
+
+    fun saveArticleToDB(article: Article) = viewModelScope.launch(Dispatchers.IO) {
+        saveNewsUseCase.execute(article)
+    }
+
+    fun getSavedArticles() = liveData {
+        getSavedNewsUseCase.execute().collect {
+            emit(it)
+        }
+    }
+
+    fun deleteArticle(article: Article) = viewModelScope.launch(Dispatchers.IO) {
+        deleteSavedNewsUseCase.execute(article)
     }
 
     fun isInternetAvailable(context: Context?): Boolean {

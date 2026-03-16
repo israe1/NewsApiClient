@@ -21,6 +21,7 @@ kotlinSerialization = "2.3.10"
 navigation = "2.9.7"
 fragment = "1.8.9"
 glide = "5.0.5"
+room = "2.8.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -57,6 +58,10 @@ dagger-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compil
 navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 androidx-fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
+
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 

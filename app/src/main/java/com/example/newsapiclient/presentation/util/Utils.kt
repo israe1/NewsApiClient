@@ -10,7 +10,7 @@ import java.time.ZoneOffset
 object Utils {
 
     @OptIn(ExperimentalTime::class)
-    fun timeAgo(publishedAt: String): String {
+    fun timeAgo(publishedAt: String?): String? {
         return try {
             val instant = Instant.parse(publishedAt)
             val now = Instant.now()

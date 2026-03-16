@@ -56,7 +56,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
         fun bind(article: Article) {
             binding.apply {
                 newsTitleText.text = article.title
-                newsSourceText.text = article.source.name
+                newsSourceText.text = article.source?.name
                 val publishedAt = "\u2022 ${Utils.timeAgo(article.publishedAt)}"
                 newsPublishedTimeText.text = publishedAt
                 Glide.with(newsImage.context)
