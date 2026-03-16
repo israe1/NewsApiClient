@@ -35,11 +35,13 @@ class NewsDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNewsDetailBinding.bind(view)
         viewModel = (requireActivity() as MainActivity).viewModel
+        viewModel.showSaveButton.value = false
         (requireActivity() as MainActivity)
             .setSupportActionBar(view.findViewById(R.id.newsDetailToolbar))
 
         val args : NewsDetailFragmentArgs by navArgs()
         article = args.selectedArticle
+        viewModel.isArticleSaved(article.url, article.publishedAt)
 
         binding.newsDetailWebView.apply {
             webViewClient = WebViewClient()
@@ -48,6 +50,10 @@ class NewsDetailFragment : Fragment() {
                     loadUrl(it)
                 }
             }
+        }
+
+        viewModel.showSaveButton.observe(viewLifecycleOwner) {
+            binding.saveArticleFab.isVisible = it
         }
 
         binding.newsDetailToolbar.apply {

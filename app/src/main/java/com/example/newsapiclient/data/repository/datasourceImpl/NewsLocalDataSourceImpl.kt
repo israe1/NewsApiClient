@@ -11,6 +11,9 @@ class NewsLocalDataSourceImpl(
 
     override fun getSavedArticles(): Flow<List<Article>> = articleDao.getAllArticles()
 
+    override suspend fun isArticleSaved(url: String?, publishedAt: String?): Boolean =
+        articleDao.isArticleSaved(url, publishedAt)
+
     override suspend fun saveArticleToDB(article: Article) = articleDao.insert(article)
 
     override suspend fun deleteArticlesFromDB(article: Article) = articleDao.deleteArticle(article)

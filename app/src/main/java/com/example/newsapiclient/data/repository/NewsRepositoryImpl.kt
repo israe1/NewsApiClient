@@ -27,6 +27,11 @@ class NewsRepositoryImpl(
     override suspend fun deleteNews(article: Article) = newsLocalDataSource.deleteArticlesFromDB(article)
 
 
+    override suspend fun isArticleSaved(
+        url: String?,
+        publishedAt: String?
+    ): Boolean = newsLocalDataSource.isArticleSaved(url, publishedAt)
+
     override fun getSavedNews(): Flow<List<Article>> = newsLocalDataSource.getSavedArticles()
 
     private fun responseToResource(response: Response<APIResponse>): Resource<APIResponse> {

@@ -23,4 +23,7 @@ interface ArticleDao {
     @Delete
     suspend fun deleteArticle(article: Article)
 
+    @Query("SELECT EXISTS(SELECT 1 FROM articles WHERE url = :url AND publishedAt = :publishedAt)")
+    suspend fun isArticleSaved(url: String?, publishedAt: String?): Boolean
+
 }

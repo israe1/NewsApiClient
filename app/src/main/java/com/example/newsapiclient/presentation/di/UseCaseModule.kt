@@ -5,6 +5,7 @@ import com.example.newsapiclient.domain.usecase.DeleteSavedNewsUseCase
 import com.example.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
 import com.example.newsapiclient.domain.usecase.GetSavedNewsUseCase
 import com.example.newsapiclient.domain.usecase.GetSearchedNewsUseCase
+import com.example.newsapiclient.domain.usecase.IsArticleSavedUseCase
 import com.example.newsapiclient.domain.usecase.SaveNewsUseCase
 import dagger.Module
 import dagger.Provides
@@ -44,6 +45,12 @@ class UseCaseModule {
     @Provides
     fun provideDeleteSavedNewsUseCase(newsRepository: NewsRepository): DeleteSavedNewsUseCase {
         return DeleteSavedNewsUseCase(newsRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideIsArticleSavedUseCase(newsRepository: NewsRepository): IsArticleSavedUseCase {
+        return IsArticleSavedUseCase(newsRepository)
     }
 
 }

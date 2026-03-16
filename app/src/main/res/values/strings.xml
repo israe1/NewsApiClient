@@ -11,9 +11,10 @@
     <string name="settings_fragment">Settings Fragment</string>
     <string name="news_image">News Image</string>
     <string name="bookmark_icon">Bookmark Icon</string>
-    <string name="no_saved_articles">No saved articles yet</string>
+    <string name="no_saved_articles">No saved articles.</string>
     <string name="newsfeed">NewsFeed</string>
     <string name="saved_articles">Saved Articles</string>
     <string name="article_saved">Article saved</string>
     <string name="save_article">Save Article</string>
+    <string name="article_deleted_successfully">Article deleted successfully!</string>
 </resources>

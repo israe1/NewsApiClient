@@ -5,6 +5,7 @@ import com.example.newsapiclient.domain.usecase.DeleteSavedNewsUseCase
 import com.example.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
 import com.example.newsapiclient.domain.usecase.GetSavedNewsUseCase
 import com.example.newsapiclient.domain.usecase.GetSearchedNewsUseCase
+import com.example.newsapiclient.domain.usecase.IsArticleSavedUseCase
 import com.example.newsapiclient.domain.usecase.SaveNewsUseCase
 import com.example.newsapiclient.presentation.viewmodel.NewsViewModelFactory
 import dagger.Module
@@ -25,7 +26,8 @@ class FactoryModule {
         getSearchedNewsUseCase: GetSearchedNewsUseCase,
         saveNewsUseCase: SaveNewsUseCase,
         getSavedNewsUseCase: GetSavedNewsUseCase,
-        deleteSavedNewsUseCase: DeleteSavedNewsUseCase
+        deleteSavedNewsUseCase: DeleteSavedNewsUseCase,
+        isArticleSavedUseCase: IsArticleSavedUseCase
     ): NewsViewModelFactory {
         return NewsViewModelFactory(
             app,
@@ -33,7 +35,8 @@ class FactoryModule {
             getSearchedNewsUseCase,
             saveNewsUseCase,
             getSavedNewsUseCase,
-            deleteSavedNewsUseCase
+            deleteSavedNewsUseCase,
+            isArticleSavedUseCase
         )
     }
 }

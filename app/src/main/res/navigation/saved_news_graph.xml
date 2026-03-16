@@ -13,13 +13,14 @@
         <action
             android:id="@+id/action_savedNewsFragment_to_newsDetailFragment"
             app:destination="@id/newsDetailFragment" />
-        <argument
-            android:name="selectedArticle"
-            app:argType="com.example.newsapiclient.data.model.Article" />
     </fragment>
     <fragment
         android:id="@+id/newsDetailFragment"
         android:name="com.example.newsapiclient.NewsDetailFragment"
         android:label="fragment_news_detail"
-        tools:layout="@layout/fragment_news_detail" />
+        tools:layout="@layout/fragment_news_detail" >
+        <argument
+            android:name="selectedArticle"
+            app:argType="com.example.newsapiclient.data.model.Article" />
+    </fragment>
 </navigation>

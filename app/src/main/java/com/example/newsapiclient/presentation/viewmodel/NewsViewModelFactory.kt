@@ -7,6 +7,7 @@ import com.example.newsapiclient.domain.usecase.DeleteSavedNewsUseCase
 import com.example.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
 import com.example.newsapiclient.domain.usecase.GetSavedNewsUseCase
 import com.example.newsapiclient.domain.usecase.GetSearchedNewsUseCase
+import com.example.newsapiclient.domain.usecase.IsArticleSavedUseCase
 import com.example.newsapiclient.domain.usecase.SaveNewsUseCase
 
 class NewsViewModelFactory(
@@ -15,7 +16,8 @@ class NewsViewModelFactory(
     private val getSearchedNewsUseCase: GetSearchedNewsUseCase,
     private val saveNewsUseCase: SaveNewsUseCase,
     private val getSavedNewsUseCase: GetSavedNewsUseCase,
-    private val deleteSavedNewsUseCase: DeleteSavedNewsUseCase
+    private val deleteSavedNewsUseCase: DeleteSavedNewsUseCase,
+    private val isArticleSavedUseCase: IsArticleSavedUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -25,7 +27,8 @@ class NewsViewModelFactory(
             getSearchedNewsUseCase,
             saveNewsUseCase,
             getSavedNewsUseCase,
-            deleteSavedNewsUseCase
+            deleteSavedNewsUseCase,
+            isArticleSavedUseCase
         ) as T
     }
 }

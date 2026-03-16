@@ -33,6 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="4dp"
+        android:maxLines="4"
+        android:ellipsize="end"
         style="@style/TextAppearance.App.Title"
         tools:text="The Future of Renewable Energy in 2026"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +56,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@id/articleTitleText"/>
     <TextView
+        android:id="@+id/deleteArticle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remove"

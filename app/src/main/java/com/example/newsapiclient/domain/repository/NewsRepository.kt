@@ -11,6 +11,7 @@ interface NewsRepository {
     suspend fun getSearchedNews(searchQuery: String, country: String, page: Int): Resource<APIResponse>
     suspend fun saveNews(article: Article)
     suspend fun deleteNews(article: Article)
+    suspend fun isArticleSaved(url: String?, publishedAt: String?): Boolean
     fun getSavedNews(): Flow<List<Article>>
 
 }
