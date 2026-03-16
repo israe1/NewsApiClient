@@ -1,5 +1,6 @@
 package com.example.newsapiclient
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -82,6 +83,7 @@ class NewsDetailFragment : Fragment() {
                         true
                     }
                     R.id.shareArticle -> {
+                        shareArticle()
                         true
                     }
                     else -> false
@@ -97,5 +99,15 @@ class NewsDetailFragment : Fragment() {
             getString(R.string.article_saved),
             Snackbar.LENGTH_LONG
         ).show()
+    }
+
+    private fun shareArticle() {
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_SUBJECT, article.title)
+            putExtra(Intent.EXTRA_TEXT, "${article.title}\n${article.url}")
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(shareIntent, "Share via"))
     }
 }
