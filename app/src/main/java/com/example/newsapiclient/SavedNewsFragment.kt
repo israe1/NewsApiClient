@@ -76,7 +76,10 @@ class SavedNewsFragment : Fragment() {
             binding.root,
             getString(R.string.article_deleted_successfully),
             Snackbar.LENGTH_LONG
-        ).show()
+        ).apply {
+            setAction(getString(R.string.undo)) {viewModel.saveArticleToDB(article)}
+            show()
+        }
     }
 
     private fun showEmptyList(show: Boolean) {

@@ -17,4 +17,5 @@
     <string name="article_saved">Article saved</string>
     <string name="save_article">Save Article</string>
     <string name="article_deleted_successfully">Article deleted successfully!</string>
+    <string name="undo">Undo</string>
 </resources>
